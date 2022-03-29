@@ -65,7 +65,7 @@ const optArticleSelector = '.post',
 
     for (let article of articleList) {
       const articleId = article.id;
-      const articleTitle = article.querySelector('.post-title')?.innerHTML;
+      const articleTitle = article.querySelector('.post-title').innerHTML;
 
       const articleTitleHtml = '<li><a href=#'+ articleId + '><span>' + articleId +'</span></a></li>';
       const articleTitleHtml2 = `<li><a href=#${articleId}><span>${articleId}</span></a></li>`;
