@@ -126,23 +126,41 @@ function generateTags(){
 
 generateTags();
 
+const articlesAll = document.querySelectorAll('article');
+const tagsArticleSelector = '.post-tags a';
+
+for (let article of articlesAll) {
+
+  const articleTags = article.querySelectorAll(tagsArticleSelector);
+
+  console.log('ssssssssssssssss: ', article, 'articleTags: ', articleTags);
+
+  for(let artcileTag of articleTags) {
+    artcileTag.addEventListener('click', tagClickHandler);
+  }
+}
+
+
 function tagClickHandler(event){
   /* prevent default action for this event */
 
   event.preventDefault();
 
+  console.log('ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss');
+
   /* make new constant named "clickedElement" and give it the value of "this" */
 
-  const clickedElement = "this";
+  const clickedElement = this;
 
   /* make a new constant "href" and read the attribute "href" of the clicked element */
 
-  const Href= document.querySelectorAll('a.active[href^="#tag-"]');
+  // const href= document.querySelector('a.active[href^="#tag-"]');
 
+  const hrefAttribute =  clickedElement.getAttribute('href');
   /* make a new constant "tag" and extract tag from the "href" constant */
 
-  const tag = href.replace('#tag-', '');
-  console.log(tag);
+  const tag = hrefAttribute.replace('#tag-', '');
+
 
   /* find all tag links with class active */
 
