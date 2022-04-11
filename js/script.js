@@ -107,7 +107,7 @@ function generateTags(){
 
       /* generate HTML of the link */
 
-      const articleTagHtml = `<li><a href=#tag-${tag}>${tag},</a></li>`;
+      const articleTagHtml = `<li><a href=#tag-${tag}>${tag}</a></li>`;
 
       /* add generated code to html variable */
 
@@ -133,20 +133,15 @@ for (let article of articlesAll) {
 
   const articleTags = article.querySelectorAll(tagsArticleSelector);
 
-  console.log('ssssssssssssssss: ', article, 'articleTags: ', articleTags);
-
   for(let artcileTag of articleTags) {
     artcileTag.addEventListener('click', tagClickHandler);
   }
 }
 
-
 function tagClickHandler(event){
   /* prevent default action for this event */
 
   event.preventDefault();
-
-  console.log('ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss');
 
   /* make new constant named "clickedElement" and give it the value of "this" */
 
@@ -154,27 +149,43 @@ function tagClickHandler(event){
 
   /* make a new constant "href" and read the attribute "href" of the clicked element */
 
-  // const href= document.querySelector('a.active[href^="#tag-"]');
-
   const hrefAttribute =  clickedElement.getAttribute('href');
+
   /* make a new constant "tag" and extract tag from the "href" constant */
 
   const tag = hrefAttribute.replace('#tag-', '');
 
-
   /* find all tag links with class active */
+
+  const tagsActive = document.querySelectorAll('.list a.active');
 
   /* START LOOP: for each active tag link */
 
-    /* remove class active */
+  for (let tagActive of tagsActive) {
+
+  /* remove class active */
+
+  tagActive.classList.remove('active');
 
   /* END LOOP: for each active tag link */
 
+  }
+
   /* find all tag links with "href" attribute equal to the "href" constant */
+
+  const article = document.querySelector('article');
+  const taglink = article.getAttribute('data-tags');
+  console.log(`The word "${taglink}" ${hrefAttribute.includes(taglink) ? 'is' : 'is not'} in the tags`);
 
   /* START LOOP: for each found tag link */
 
+  for (let tagActive of tagsActive) {
+
     /* add class active */
+
+    //.classList.add('active');
+
+  }
 
   /* END LOOP: for each found tag link */
 
