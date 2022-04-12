@@ -153,11 +153,14 @@ function tagClickHandler(event){
 
   /* make a new constant "tag" and extract tag from the "href" constant */
 
+
   const tag = hrefAttribute.replace('#tag-', '');
 
   /* find all tag links with class active */
 
   const tagsActive = document.querySelectorAll('.list a.active');
+
+  console.log('aaaaaaaaaaaaaaaaaaaaaa', tagsActive);
 
   /* START LOOP: for each active tag link */
 
@@ -165,7 +168,7 @@ function tagClickHandler(event){
 
   /* remove class active */
 
-  tagActive.classList.remove('active');
+    tagActive.classList.remove('active');
 
   /* END LOOP: for each active tag link */
 
@@ -173,17 +176,36 @@ function tagClickHandler(event){
 
   /* find all tag links with "href" attribute equal to the "href" constant */
 
-  const article = document.querySelector('article');
-  const taglink = article.getAttribute('data-tags');
-  console.log(`The word "${taglink}" ${hrefAttribute.includes(taglink) ? 'is' : 'is not'} in the tags`);
+  const allTags = document.querySelectorAll('.list a');
+
+  console.log('allTags', allTags);
+
+  const filteredTags = [];
+
+   allTags.forEach(function(tagLink) {
+    const tagLinkHrefAttribute = tagLink.getAttribute('href');
+
+    if (hrefAttribute === tagLinkHrefAttribute) {
+      filteredTags.push(tagLink);
+    }
+ });
+
+
+
+
+
+
+  // const article = document.querySelector('article');
+  // const taglink = article.getAttribute('data-tags');
+  // console.log(`The word "${taglink}" ${hrefAttribute.includes(taglink) ? 'is' : 'is not'} in the tags`);
 
   /* START LOOP: for each found tag link */
 
-  for (let tagActive of tagsActive) {
+  for (let tag of filteredTags) {
 
     /* add class active */
 
-    //.classList.add('active');
+    tag.classList.add('active');
 
   }
 
