@@ -363,7 +363,7 @@ function authorClickHandler(event){
   const article = document.querySelector('article');
   generateTitleLinks(article);
 }
-authorClickHandler();
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -378,7 +378,7 @@ function addClickListenersToAuthors(){
 
     /* add tagClickHandler as event listener for that link */
 
-    link.addEventListener('click', AuthorClickHandler);
+    link.addEventListener('click', authorClickHandler);
 
     /* END LOOP: for each link */
   }
