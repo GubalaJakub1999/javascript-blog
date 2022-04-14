@@ -87,7 +87,6 @@ for(let link of links){
 
   ////////////////////////////////////////////////////////////////////////////////////////////////
   calculateTagsParams();
-  calculateTagClass(count, params);
 
 function generateTags(){
 
@@ -160,7 +159,10 @@ function generateTags(){
   for(let tag in allTags){
     /* [NEW] generate code of a link and add it to allTagsHTML */
     //allTagsHTML += '<a href=' + tag + '>' + tag +'(' + allTags[tag] + ') ';
-    allTagsHTML += '<a class='+ calculateTagsClass(allTags[tag], tagsParams) +' href=' + tag + '>' + tag +'(' + allTags[tag] + ') ';
+    allTagsHTML += tagLinkHTML;
+    const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParams) + '</li>';
+    console.log('tagLinkHTML:', tagLinkHTML);
+    //allTagsHTML += '<a class='+ calculateTagsClass(allTags[tag], tagsParams) +' href=' + tag + '>' + tag +'(' + allTags[tag] + ') ';
   }
   /* [NEW] END LOOP: for each tag in allTags */
 
@@ -169,7 +171,7 @@ function generateTags(){
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-
+calculateTagClass(count, params);
 generateTags();
 
 const articlesAll = document.querySelectorAll('article');
