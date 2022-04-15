@@ -88,6 +88,7 @@ for(let link of links){
   ////////////////////////////////////////////////////////////////////////////////////////////////
   calculateTagsParams();
 
+
 function generateTags(){
 
   /* [NEW] create a new variable allTags with an empty object */
@@ -159,10 +160,10 @@ function generateTags(){
   for(let tag in allTags){
     /* [NEW] generate code of a link and add it to allTagsHTML */
     //allTagsHTML += '<a href=' + tag + '>' + tag +'(' + allTags[tag] + ') ';
-    allTagsHTML += tagLinkHTML;
-    const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParams) + '</li>';
-    console.log('tagLinkHTML:', tagLinkHTML);
-    //allTagsHTML += '<a class='+ calculateTagsClass(allTags[tag], tagsParams) +' href=' + tag + '>' + tag +'(' + allTags[tag] + ') ';
+    //const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParams) + '</li>';
+    //console.log('tagLinkHTML:', tagLinkHTML);
+    allTagsHTML += '<a class='+ optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) +' href=' + tag + '>' + tag +'(' + allTags[tag] + ') ';
+    //allTagsHTML += tagLinkHTML;
   }
   /* [NEW] END LOOP: for each tag in allTags */
 
@@ -171,7 +172,6 @@ function generateTags(){
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-calculateTagClass(count, params);
 generateTags();
 
 const articlesAll = document.querySelectorAll('article');
@@ -443,9 +443,10 @@ function calculateTagsParams(allTags){
   return params;
 }
 
-function calculateTagClass(){
+function calculateTagClass(count, params){
   const normalizedCount = count - params.min;
   const normalizedMax = params.max - params.min;
   const percentage = normalizedCount / normalizedMax;
   const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1);
+  console.log(classNumber)
 }
